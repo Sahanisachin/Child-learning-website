@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fun Learning World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-icon">🌟</div>
+          <div>
+            <p class="brand-kicker">Play & Learn</p>
+            <h1>Fun Learning World</h1>
+          </div>
+        </div>
+
+        <nav class="top-nav" aria-label="Main navigation">
+          <button class="nav-btn active" data-view="home">🏠 Home</button>
+          <button class="nav-btn" data-view="play">🎮 Play</button>
+          <button class="nav-btn" data-view="rewards">🏆 Rewards</button>
+          <button class="nav-btn" data-view="progress">👤 My Progress</button>
+        </nav>
+
+        <div class="stars-pill">
+          <span>⭐</span>
+          <strong id="headerStars">0</strong>
+        </div>
+      </header>
+
+      <main>
+        <section id="homeView" class="view active">
+          <div class="hero">
+            <div class="hero-text">
+              <p class="eyebrow">Learn • Play • Win!</p>
+              <h2>🌟 FUN LEARNING WORLD 🌟</h2>
+              <p class="subtitle">Hi Buddy! 👋 What shall we learn today?</p>
+              <div class="hero-cta-row">
+                <button class="primary-btn" data-view="play">Start Playing</button>
+                <button class="secondary-btn" data-view="progress">See My Progress</button>
+              </div>
+            </div>
+
+            <div class="mascot-wrap" aria-label="Mascot animation">
+              <div class="cloud cloud-one"></div>
+              <div class="cloud cloud-two"></div>
+              <div class="mascot-card">
+                <div class="mascot-face">
+                  <span class="eye left"></span>
+                  <span class="eye right"></span>
+                  <span class="smile"></span>
+                </div>
+                <div class="mascot-body">
+                  <span class="arm left"></span>
+                  <span class="arm right"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-grid">
+            <button class="activity-card" data-category="numbers">
+              <span class="card-icon">🔢</span>
+              <h3>NUMBERS</h3>
+              <p>Let's play with numbers!</p>
+            </button>
+
+            <button class="activity-card" data-category="maths">
+              <span class="card-icon">➕</span>
+              <h3>MATHS</h3>
+              <p>Add & subtract!</p>
+            </button>
+
+            <button class="activity-card" data-category="tables">
+              <span class="card-icon">📚</span>
+              <h3>TABLES</h3>
+              <p>Count by jumps!</p>
+            </button>
+
+            <button class="activity-card" data-category="english">
+              <span class="card-icon">🔤</span>
+              <h3>WORDS</h3>
+              <p>Let's make words!</p>
+            </button>
+
+            <button class="activity-card" data-category="rewards">
+              <span class="card-icon">🏆</span>
+              <h3>MY REWARDS</h3>
+              <p>Collect stars!</p>
+            </button>
+          </div>
+        </section>
+
+        <section id="playView" class="view">
+          <div class="play-header">
+            <div>
+              <p class="eyebrow">Game zone</p>
+              <h2>Pick a practice game</h2>
+            </div>
+            <button class="mini-btn" data-view="home">🏠 Home</button>
+          </div>
+
+          <div id="categoryList" class="category-list"></div>
+        </section>
+
+        <section id="rewardsView" class="view">
+          <div class="panel reward-panel">
+            <h2>🏆 My Rewards</h2>
+            <div class="reward-box">
+              <div class="reward-stars">
+                <span>⭐</span>
+                <span id="rewardStars">0</span>
+              </div>
+              <p>Big stars you earned!</p>
+            </div>
+            <div class="badge-row" id="badgeRow"></div>
+          </div>
+        </section>
+
+        <section id="progressView" class="view">
+          <div class="panel progress-panel">
+            <h2>👤 My Progress</h2>
+            <div class="progress-summary">
+              <div class="progress-card">
+                <span>✅ Games Done</span>
+                <strong id="doneCount">0</strong>
+              </div>
+              <div class="progress-card">
+                <span>⭐ Total Stars</span>
+                <strong id="progressStars">0</strong>
+              </div>
+            </div>
+            <ul id="progressList" class="progress-list"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="gameModal" class="modal hidden" aria-modal="true" role="dialog" aria-labelledby="gameTitle">
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="game-modal-card">
+        <button class="close-btn" id="closeModal" aria-label="Close game">✕</button>
+        <div class="game-topbar">
+          <div>
+            <p id="gameTag" class="eyebrow"></p>
+            <h3 id="gameTitle">Practice Game</h3>
+          </div>
+          <div class="stars-pill small">
+            <span>⭐</span>
+            <strong id="modalStars">0</strong>
+          </div>
+        </div>
+
+        <div class="question-area">
+          <div id="questionText" class="question-text"></div>
+          <div id="displayVisual" class="display-visual"></div>
+          <div id="questionHint" class="question-hint">Tap the right answer!</div>
+          <div id="answerButtons" class="answer-buttons"></div>
+          <div id="feedback" class="feedback hidden"></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <button class="nav-btn mobile active" data-view="home">🏠</button>
+      <button class="nav-btn mobile" data-view="play">🎮</button>
+      <button class="nav-btn mobile" data-view="rewards">🏆</button>
+      <button class="nav-btn mobile" data-view="progress">👤</button>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
+</html>
